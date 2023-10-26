@@ -27,7 +27,7 @@ module.exports = () => {
         theme_color: '#31a9e1',
         icons: [
           {
-            src: path.resolve('src/favicon.ico'),
+            src: path.resolve('src/img/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
           },
         ],
