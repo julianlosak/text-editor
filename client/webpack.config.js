@@ -16,19 +16,20 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './client/index.html',
-        filename: 'index.html',
+        template: './index.html',
+        filename: 'text-editor',
       }),
       new WebpackPwaManifest({
-        name: 'Your Text Editor App',
+        name: 'text-editor',
         short_name: 'Text Editor',
         description: 'A simple text editor app',
         background_color: '#ffffff',
         theme_color: '#31a9e1',
         icons: [
           {
-            src: path.resolve('./client/src/img/logo.png'),
+            src: path.resolve('./src/img/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons')
           },
         ],
       }),
