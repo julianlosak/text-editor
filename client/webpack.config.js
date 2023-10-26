@@ -17,39 +17,44 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        filename: 'text-editor',
+        title: 'text-editor'
       }),
       new WebpackPwaManifest({
         name: 'text-editor',
-        short_name: 'Text Editor',
-        description: 'A simple text editor app',
-        background_color: '#ffffff',
-        theme_color: '#31a9e1',
+        short_name: 'TextApp',
+        background_color: '#7eb4e2',
+        theme_color: "#7eb4e2",
+        start_url: './',
+        publicPath: './',
+        fingerprints: false,
+        inject: true,
         icons: [
           {
-            src: path.resolve('./src/img/logo.png'),
+            src: path.resolve('./src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons')
           },
-        ],
+        ]
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
       }),
     ],
+
     module: {
       rules: [
         {
-          test: /\.css$/,
+          test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.js$/,
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },
